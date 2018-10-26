@@ -159,8 +159,10 @@
          * searching for.
          */
         const filterByName = (searchForName, personList) => {
+            const searchString = searchForName.toLowerCase();
             return personList.filter((person) => {
-                return person.firstName === searchForName || person.lastName === searchForName;
+                return person.firstName.toLowerCase().includes(searchString)
+                    || person.lastName.toLowerCase().includes(searchString);
             });
         }
 
