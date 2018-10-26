@@ -143,16 +143,12 @@
          */
         const shuffleList = (list) => {
             // Make a copy & don't mutate the passed in list
-            let result = list.slice(1);
+            let result = [...list]
 
-            let tmp, j, i = list.length - 1
-
-            for (; i > 0; i -= 1) {
-                j = Math.floor(Math.random() * (i + 1));
-                tmp = list[i];
-                list[i] = list[j];
-                list[j] = tmp;
-            }
+            result.forEach((_, idx1, arr) => {
+               const idx2 = Math.floor(Math.random() * (idx1 + 1));
+               [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
+            });
 
             return result;
         }
